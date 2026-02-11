@@ -1,13 +1,10 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
 
-function App() {
-  return (
-    <div style={{ padding: 24, fontFamily: "sans-serif" }}>
-      <h1>Delivery App Web (React + Laravel)</h1>
-      <p>React is working ✅</p>
-    </div>
-  );
-}
-
-createRoot(document.getElementById("app")).render(<App />);
+createRoot(document.getElementById("app")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
