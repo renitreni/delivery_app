@@ -1,12 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import CustomerNavbar from "../components/CustomerNavbar";
+import DriverNavbar from "../components/DriverNavbar";
 
-export default function CustomerLayout() {
+export default function DriverLayout() {
   return (
     <div className="min-h-screen bg-[#f3f4f6]">
-      <CustomerNavbar />
-      <main className="w-full">
+      <DriverNavbar />
+      <main>
         <Outlet />
       </main>
     </div>

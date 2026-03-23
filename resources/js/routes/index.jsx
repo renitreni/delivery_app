@@ -1,117 +1,103 @@
-// resources/js/routes/index.jsx
-import React from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import PadalaExpress from "../pages/home/Default";
+import Login from "../pages/auth/Login";
+import DriverLogin from "../pages/auth/DriverLogin";
+import DriverRegister from "../pages/auth/DriverRegister";
+import Register from "../pages/auth/Register";
 
-// layouts
+import Customer from "../pages/dashboard/Customer";
+import Book from "../pages/dashboard/Book";
+import History from "../pages/dashboard/History";
+import TrackPackage from "../pages/dashboard/TrackPackage";
+import Profile from "../pages/dashboard/Profile";
+import Notification from "../pages/dashboard/Notification";
+
+import Driver from "../pages/dashboarddriver/Driver";
+import DriverHistory from "../pages/dashboarddriver/DriverHistory";
+import DriverProfile from "../pages/dashboarddriver/DriverProfile";
+import Earnings from "../pages/dashboarddriver/Earnings";
+import Track from "../pages/dashboarddriver/Track";
+
+import DriverLayout from "../layouts/DriverLayout";
 import CustomerLayout from "../layouts/CustomerLayout";
-import RiderLayout from "../layouts/RiderLayout";
-import RestaurantLayout from "../layouts/RestaurantLayout";
-import AdminLayout from "../layouts/AdminLayout";
 
-// pages (admin)
-import AdminDashboard from "../pages/admin/Dashboard";
-import AdminUsers from "../pages/admin/Users";
-import AdminRider from "../pages/admin/Rider";
-import AdminRestaurants from "../pages/admin/Restaurants";
-import AdminOrders from "../pages/admin/Orders";
-import AdminPayouts from "../pages/admin/Payouts";
-import AdminSupport from "../pages/admin/Support";
-import AdminSettings from "../pages/admin/Settings";
-
-// pages (customer)
-import CustomerDashboard from "../pages/customer/Dashboard";
-import RestaurantShow from "../pages/customer/Restaurantshow";
-import Order from "../pages/customer/Order";
-import Messages from "../pages/customer/Messages";
-import Profile from "../pages/customer/Profile";
-import Addresses from "../pages/customer/Addresses";
-import Payment from "../pages/customer/Payment";
-import Help from "../pages/customer/Help";
-
-// pages (rider)
-import RiderDashboard from "../pages/rider/Dashboard";
-import RiderJobs from "../pages/rider/Jobs";
-import RiderDelivery from "../pages/rider/Delivery";
-import RiderEarnings from "../pages/rider/Earnings";
-import RiderMessages from "../pages/rider/Messages";
-import RiderProfile from "../pages/rider/Profile";
-
-// pages (restaurant)
-import RestaurantDashboard from "../pages/Restaurant/Dashboard";
-import RestaurantMenu from "../pages/Restaurant/Menu";
-import RestaurantOrders from "../pages/Restaurant/Orders";
-import RestaurantPayouts from "../pages/Restaurant/Payouts";
-import RestaurantPromos from "../pages/Restaurant/Promos";
-import RestaurantReviews from "../pages/Restaurant/Reviews";
-import RestaurantSettings from "../pages/Restaurant/Settings";
-
-export const router = createBrowserRouter([
-  { path: "/", element: <Navigate to="/customer/dashboard" replace /> },
-
-  // ADMIN
+const router = createBrowserRouter([
   {
-    path: "/admin",
-    element: <AdminLayout />,
-    children: [
-      { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: "dashboard", element: <AdminDashboard /> },
-      { path: "users", element: <AdminUsers /> },
-      { path: "rider", element: <AdminRider />},
-      { path: "restaurants", element: <AdminRestaurants />},
-      { path: "orders", element: <AdminOrders />},
-      { path: "payouts", element: <AdminPayouts />},
-      { path: "support", element: <AdminSupport />},
-      { path: "Settings", element: <AdminSettings />},
-    ],
+    path: "/",
+    element: <PadalaExpress />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/driver-login",
+    element: <DriverLogin />,
+  },
+  {
+    path: "/driver-register",
+    element: <DriverRegister />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 
-  // CUSTOMER
   {
-    path: "/customer",
     element: <CustomerLayout />,
     children: [
-      { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: "dashboard", element: <CustomerDashboard /> },
-      { path: "restaurant/:slug", element: <RestaurantShow /> },
-      { path: "order", element: <Order /> },
-      { path: "messages", element: <Messages /> },
-      { path: "profile", element: <Profile /> },
-      { path: "addresses", element: <Addresses /> },
-      { path: "payment", element: <Payment /> },
-      { path: "help", element: <Help /> },
+      {
+        path: "/customer",
+        element: <Customer />,
+      },
+      {
+        path: "/book",
+        element: <Book />,
+      },
+      {
+        path: "/history",
+        element: <History />,
+      },
+      {
+        path: "/track-package",
+        element: <TrackPackage />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/notification",
+        element: <Notification />,
+      },,
     ],
   },
 
-  // RIDER
   {
-    path: "/rider",
-    element: <RiderLayout />,
+    element: <DriverLayout />,
     children: [
-      { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: "dashboard", element: <RiderDashboard /> },
-      { path: "jobs", element: <RiderJobs /> },
-      { path: "delivery", element: <RiderDelivery /> },
-      { path: "earnings", element: <RiderEarnings /> },
-      { path: "messages", element: <RiderMessages /> },
-      { path: "profile", element: <RiderProfile /> },
+      {
+        path: "/driver",
+        element: <Driver />,
+      },
+      {
+        path: "/track",
+        element: <Track />,
+      },
+      {
+        path: "/driver-history",
+        element: <DriverHistory />,
+      },
+      {
+        path: "/earnings",
+        element: <Earnings />,
+      },
+      {
+        path: "/driver-profile",
+        element: <DriverProfile />,
+      },
     ],
   },
-
-  // RESTAURANT
-  {
-    path: "/restaurant",
-    element: <RestaurantLayout />,
-    children: [
-      { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: "dashboard", element: <RestaurantDashboard /> },
-      { path: "menu", element: <RestaurantMenu /> },
-      { path: "orders", element: <RestaurantOrders /> },
-      { path: "payouts", element: <RestaurantPayouts /> },
-      { path: "promos", element: <RestaurantPromos /> },
-      { path: "reviews", element: <RestaurantReviews /> },
-      { path: "settings", element: <RestaurantSettings /> },
-    ],
-  },
-
-  { path: "*", element: <div className="p-8">404</div> },
 ]);
+
+export default router;
